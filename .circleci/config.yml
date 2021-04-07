@@ -6,6 +6,7 @@ commands:
       - run:
           name: Install Deps
           command: |
+            mkdir -p ./home/circleci/project/src/node_modules
             npm install --prefix ./home/circleci/project/src/
 
 jobs:
