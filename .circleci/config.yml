@@ -1,0 +1,34 @@
+version: 2.1
+
+commands:
+  install_deps:
+    steps:
+      - run:
+          name: Install Deps
+          command: |
+            npm install --prefix ./home/circleci/project/src/
+
+jobs:
+  ci-build:
+    docker:
+      - image: circleci/node:lts
+    environment:
+      JEST_JUNIT_OUTPUT_DIR: test-output
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run tests
+          command: |
+            npm run test-unit
+            mkdir -p test-output
+
+  
+
+      
+
+workflows:
+  build-and-packge:
+    jobs:
+      - ci-build
+      
