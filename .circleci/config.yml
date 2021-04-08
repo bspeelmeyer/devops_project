@@ -21,7 +21,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            npm run test-unit --prefix
+            npm run test-unit --prefix ./src
             mkdir -p test-output
 
   
