@@ -6,7 +6,8 @@ commands:
       - run:
           name: Install Deps
           command: |
-            npm install --prefix ./home/circleci/project/src/
+            mkdir -p ./src/node_modules
+            npm install --prefix ./src
 
 jobs:
   ci-build:
@@ -20,7 +21,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            npm run test-unit
+            npm run test-unit --prefix ./src
             mkdir -p test-output
 
   
