@@ -16,7 +16,7 @@ jobs:
     environment:
       JEST_JUNIT_OUTPUT_DIR: test-output
     store_test_results:
-      path: ./src
+      path: ./src/test-output
     steps:
       - checkout
       - install_deps
