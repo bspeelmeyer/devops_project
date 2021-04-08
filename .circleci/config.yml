@@ -52,7 +52,16 @@ jobs:
           command: |
             # exit with non-zero if there is any security issues
             exit $(cat sast-output.json | jq .total_count.sec)
-
+  pack:
+    docker:
+      - image: circleci/node:lts
+    environment:
+      NODE_ENV: production
+    steps:
+      - checkout
+      - install_deps
+      - store_artifacts:
+          path: ./
 
       
 
@@ -63,4 +72,8 @@ workflows:
       - sast:
           requires:
             - ci-build
-      
+      - pack: 
+          requires:
+            - ci-build
+            - sast
+          
