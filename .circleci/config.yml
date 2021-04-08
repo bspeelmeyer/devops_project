@@ -56,7 +56,7 @@ jobs:
   integration-tests:
     docker:
       - image: circleci/node:lts
-      - image: mongo:4.0
+      
     environment:
       APP_PORT: 4000
     steps:
