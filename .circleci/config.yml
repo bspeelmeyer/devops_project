@@ -28,7 +28,29 @@ jobs:
             npm run test-unit --prefix ./src
             mkdir -p test-output
 
-  
+  sast:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run: 
+          name: Install NodeJsScan
+          command: |
+            sudo apt update
+            sudo apt install python3-pip
+            pip3 install nodejsscan
+      - run:
+          name: run NodeJsScan
+          command: |
+            nodejsscan -d ./ -o sast-output.json
+      - store_artifacts:
+          path: sast-output.json
+      - run:
+          name: Parse sast output
+          command: |
+            # exit with non-zero if there is any security issues
+            exit $(cat sast-output.json | jq .total_count.sec)
+
 
       
 
@@ -36,4 +58,7 @@ workflows:
   build-and-packge:
     jobs:
       - ci-build
+      - sast:
+          requires:
+            - ci-build
       
