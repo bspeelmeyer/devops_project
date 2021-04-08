@@ -59,6 +59,7 @@ jobs:
       
     environment:
       APP_PORT: 4000
+      JEST_JUNIT_OUTPUT_DIR: /home/circleci/project/integration-test-output
     steps:
       - checkout
       - install_deps
@@ -67,6 +68,8 @@ jobs:
           command: |
             npm run test-integration --prefix src/
             mkdir -p integration-test-output
+      - store_test_results:
+          path:  /home/circleci/project/integration-test-output
 
 
   pack:
