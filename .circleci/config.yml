@@ -58,7 +58,7 @@ jobs:
       - image: circleci/node:lts
       - image: mongo:4.0
     environment:
-      APP_PORT: 5000
+      APP_PORT: 4000
     steps:
       - checkout
       - install_deps
