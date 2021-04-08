@@ -6,8 +6,7 @@ commands:
       - run:
           name: Install Deps
           command: |
-            mkdir -p ./src/node_modules
-            npm install --prefix ./src
+            npm install
 
 jobs:
   ci-build:
