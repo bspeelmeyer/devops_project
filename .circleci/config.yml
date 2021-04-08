@@ -18,6 +18,9 @@ jobs:
     steps:
       - checkout
       - install_deps
+      - run: linting
+        command: |
+          npm run test-lint --prefix ./src
       - run:
           name: run tests
           command: |
