@@ -90,7 +90,7 @@ workflows:
           requires:
             - ci-build
       - integration-tests:
-          requiers:
+          requires:
             - ci-build
             - sast
       - pack: 
