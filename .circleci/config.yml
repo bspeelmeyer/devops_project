@@ -15,8 +15,6 @@ jobs:
       - image: circleci/node:lts
     environment:
       JEST_JUNIT_OUTPUT_DIR: test-output
-    store_test_results:
-      path: ./src/test-output
     steps:
       - checkout
       - install_deps
@@ -29,7 +27,9 @@ jobs:
           command: |
             npm run test-unit --prefix ./src
             mkdir -p test-output
-
+      - store_test_results:
+          path: ~/src/test-output/
+    
   sast:
     docker:
       - image: circleci/node:lts
