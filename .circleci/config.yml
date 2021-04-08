@@ -29,9 +29,7 @@ jobs:
             mkdir -p test-output
       - store_test_results:
           path: /home/circleci/project/test-output/
-      - store_artifacts:
-          path : /home/circleci/project/test-output/
-    
+          
   sast:
     docker:
       - image: circleci/node:lts
