@@ -13,8 +13,6 @@ jobs:
   ci-build:
     docker:
       - image: circleci/node:lts
-    environment:
-      JEST_JUNIT_OUTPUT_DIR: ./src/test-output
     steps:
       - checkout
       - install_deps
@@ -30,7 +28,7 @@ jobs:
             mkdir -p test-output
             ls
       - store_test_results:
-          path: ~/src/test-output/
+          path: ~/test-output/
     
   sast:
     docker:
