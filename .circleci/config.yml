@@ -19,10 +19,11 @@ jobs:
       - checkout
       - install_deps
       - run: linting
-        command: |
-          npm run test-lint --prefix ./src
+          name: run linting tests
+          command: |
+            npm run test-lint --prefix ./src
       - run:
-          name: run tests
+          name: run unit tests
           command: |
             npm run test-unit --prefix ./src
             mkdir -p test-output
