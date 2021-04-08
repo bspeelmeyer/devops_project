@@ -42,7 +42,7 @@ jobs:
       - run:
           name: run NodeJsScan
           command: |
-            nodejsscan -d ./ sast-output.json
+            nodejsscan -d ./ -o sast-output.json
       - store_artifacts:
           path: sast-output.json
       - run:
