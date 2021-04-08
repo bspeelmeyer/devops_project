@@ -26,7 +26,9 @@ jobs:
           name: run unit tests
           command: |
             npm run test-unit --prefix ./src
+            pwd
             mkdir -p test-output
+            ls
       - store_test_results:
           path: ~/src/test-output/
     
