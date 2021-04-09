@@ -73,7 +73,7 @@ jobs:
   
   e2e-tests:
     docker:
-      - image: qabuild:latest
+      - image: circleci/node:lts
       - image: mongo:4.0
     environment:
       APP_PORT: 5000
