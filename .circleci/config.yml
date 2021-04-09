@@ -74,8 +74,11 @@ jobs:
   e2e-tests:
     docker:
       - image: circleci/node:lts
+    
     steps:
       - checkout
+      - setup_remote_docker:
+        
       - install_deps
       - run:
           name: run e2e tests
