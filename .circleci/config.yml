@@ -83,6 +83,7 @@ jobs:
       - run:
           name: run e2e tests
           command: |
+            docker --version  
             sudo docker build -f src/qawolfdockerfile ./src -t qabuild:latest --no-cache
             sudo docker-compose -f docker-compose-e2e.yml up -d
             sudo docker exec -it qawolf /usr/app/e2e.sh
