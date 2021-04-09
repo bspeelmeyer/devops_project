@@ -80,6 +80,7 @@ jobs:
       - run:
           name: run e2e tests
           command: |
+            sudo service docker start
             sudo chmod +x scripts/e2e-ci.sh
             sudo ./scripts/e2e-ci.sh
             
