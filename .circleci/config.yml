@@ -72,7 +72,7 @@ jobs:
           path:  /home/circleci/project/integration-test-output
   
   end-to-end-tests:
-    docket:
+    docker:
       - image: circleci/node:lts
       - image: mongo:4.0
     environment:
@@ -85,6 +85,8 @@ jobs:
           name: run e2e tests
           commands: |
             npm run test-e2e --prefix ./src
+            chmod +x scripts/e2e-ci.sh
+            ./scripts/e2e-ci.sh
             mkdir -p e2e-tests-output
       - store_test_results:
           path: /home/circleci/project/e2e-tests-output
