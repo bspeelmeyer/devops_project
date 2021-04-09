@@ -78,7 +78,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
+          version: 19.03.12
       - install_deps
       - run:
           name: run e2e tests
