@@ -84,8 +84,8 @@ jobs:
       - run:
           name: run e2e tests
           command: |
-            chmod +x scripts/e2e-ci.sh
-            ./scripts/e2e-ci.sh
+            sudo chmod +x scripts/e2e-ci.sh
+            sudo ./scripts/e2e-ci.sh
             npm run test-e2e --prefix /src
             mkdir -p e2e-test-output
       - store_test_results:
