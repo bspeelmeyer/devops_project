@@ -84,6 +84,8 @@ jobs:
       - run:
           name: run e2e tests
           command: |
+            sudo docker-compose up -d
+            npm run start --prefix /src
             sudo chmod +x scripts/e2e-ci.sh
             sudo ./scripts/e2e-ci.sh
             npm run test-e2e --prefix /src
