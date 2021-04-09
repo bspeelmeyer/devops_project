@@ -74,7 +74,8 @@ jobs:
   e2e-tests:
     docker:
       - image: circleci/node:lts
-    
+    environment:
+      JEST_UNIT_OUTPUT_DIR: /home/circleci/project/e2e-test-output
     steps:
       - checkout
       - setup_remote_docker:
@@ -85,6 +86,8 @@ jobs:
           command: |
             chmod +x scripts/e2e-ci.sh
             ./scripts/e2e-ci.sh
+      - store_test_output:
+          path: /home/circleci/project/e2e-test-output
             
      
             
