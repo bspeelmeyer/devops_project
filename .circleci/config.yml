@@ -71,7 +71,7 @@ jobs:
       - store_test_results:
           path:  /home/circleci/project/integration-test-output
   
-  end-to-end-tests:
+  e2e-tests:
     docker:
       - image: circleci/node:lts
       - image: mongo:4.0
@@ -80,7 +80,7 @@ jobs:
       - intsall_deps
       - run:
           name: run e2e tests
-          commands: |
+          command: |
             npm run test-e2e --prefix /src
             
             
@@ -110,7 +110,7 @@ workflows:
           requires:
             - ci-build
             - sast
-      - end-to-end-tests:
+      - e2e-tests:
           requires:
             - ci-build
             - sast
