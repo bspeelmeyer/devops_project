@@ -75,7 +75,7 @@ jobs:
     docker:
       - image: circleci/node:lts
     environment:
-      JEST_UNIT_OUTPUT_DIR: /home/circleci/project/e2e-test-output
+      JEST_JUNIT_OUTPUT_DIR: /home/circleci/project/e2e-test-output
     steps:
       - checkout
       - setup_remote_docker:
