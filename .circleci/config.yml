@@ -74,24 +74,16 @@ jobs:
   e2e-tests:
     docker:
       - image: circleci/node:lts
-      - image: mongo:4.0
-    environment:
-      APP_PORT: 5000
-      JEST_JUNIT_OUTPUT_DIR: /home/circleci/project/e2e-test-output
     steps:
       - checkout
       - install_deps
       - run:
           name: run e2e tests
           command: |
-            sudo docker-compose up -d
-            npm run start --prefic /src
             chmod +x scripts/e2e-ci.sh
             ./scripts/e2e-ci.sh
-            npm run test-e2e --prefix /src
-            mkdir -p e2e-test-output
-      - store_test_results:
-          path: /home/circleci/project/e2e-test-output
+            
+     
             
             
       
