@@ -91,11 +91,6 @@ jobs:
       - store_test_results:
           path: /home/circleci/project/e2e-test-output
             
-     
-            
-            
-      
-
   pack:
     docker:
       - image: circleci/node:lts
@@ -106,8 +101,6 @@ jobs:
       - install_deps
       - store_artifacts:
           path: ./
-
-      
 
 workflows:
   build-and-packge:
