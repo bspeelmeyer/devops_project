@@ -70,8 +70,27 @@ jobs:
             mkdir -p integration-test-output
       - store_test_results:
           path:  /home/circleci/project/integration-test-output
-
-
+  
+  e2e-tests:
+    docker:
+      - image: circleci/node:lts
+    environment:
+      JEST_JUNIT_OUTPUT_DIR: /home/circleci/project/e2e-test-output
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.12
+      - install_deps
+      - run:
+          name: run e2e tests
+          command: |
+            chmod +x scripts/e2e-ci.sh
+            ./scripts/e2e-ci.sh
+            mkdir -p e2e-test-output
+            pwd
+      - store_test_results:
+          path: /home/circleci/project/e2e-test-output
+            
   pack:
     docker:
       - image: circleci/node:lts
@@ -82,8 +101,6 @@ jobs:
       - install_deps
       - store_artifacts:
           path: ./
-
-      
 
 workflows:
   build-and-packge:
@@ -96,6 +113,11 @@ workflows:
           requires:
             - ci-build
             - sast
+      - e2e-tests:
+          requires:
+            - ci-build
+            - sast
+            - integration-tests
       - pack: 
           requires:
             - ci-build
