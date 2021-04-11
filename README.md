@@ -189,7 +189,6 @@ e2e-tests job runs the end to end tests and stores the test results in e2e-test-
             chmod +x scripts/e2e-ci.sh
             ./scripts/e2e-ci.sh
             mkdir -p e2e-test-output
-            pwd
       - store_test_results:
           path: /home/circleci/project/e2e-test-output
 
