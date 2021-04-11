@@ -121,6 +121,8 @@ workflows:
           requires:
             - ci-build
             - sast
+            - integration-tests
+            - e2e-tests
           filters:
             branches:
               only:
