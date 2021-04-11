@@ -1,3 +1,5 @@
+### Benjamin Scott Speelmeyer S3729184
+
 # Simple Todo App with MongoDB, Express.js and Node.js
 The ToDo app uses the following technologies and javascript libraries:
 * MongoDB
