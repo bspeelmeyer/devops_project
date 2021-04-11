@@ -21,12 +21,12 @@ jobs:
       - run: 
           name: run linting tests
           command: |
-            npm run test-lint --prefix ./src
+            mkdir -p test-output
+            npm run test-lint --prefix /src
       - run:
           name: run unit tests
           command: |
-            npm run test-unit --prefix ./src
-            mkdir -p test-output
+            npm run test-unit --prefix /src
       - store_test_results:
           path: /home/circleci/project/test-output/
           
@@ -87,7 +87,6 @@ jobs:
             chmod +x scripts/e2e-ci.sh
             ./scripts/e2e-ci.sh
             mkdir -p e2e-test-output
-            pwd
       - store_test_results:
           path: /home/circleci/project/e2e-test-output
             
