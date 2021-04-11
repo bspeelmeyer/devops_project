@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "DB_URI=mongodb://localhost:27017/tododb SESSION_SECRET=secret node server.js",
-    "test-lint": "eslint .",
+    "test-lint": "eslint . ",
     "test-unit": "jest --ci test/unit --coverage",
     "test-integration": "DB_URI=mongodb://localhost:27017/tododb SESSION_SECRET=secret jest --ci test/integration --forceExit",
     "test-e2e": "DB_URI=mongodb://db:27017/tododb npx jest --config={} --preset=\"@qawolf/jest-plugin\" --rootDir=.qawolf --testTimeout=60000 --runInBand --forceExit"
